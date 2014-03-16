@@ -18,12 +18,24 @@ Windows:
 * Install python win32 api wmi wrapper: https://pypi.python.org/pypi/WMI/#downloads
 * Unzip the files into C:\Python27\Lib\site-packages
 
+Additional Notes:
+-------------------------
+This P2Pool is configured to run with Cypherfunksd with the following settings:
+
+    port=33666
+    rpcport=9999
+    workerport=36363
+    p2poolport=36663
+
+Then run your miner program, connecting to 127.0.0.1 on port 36363 with any
+username and password.
+
 Running P2Pool:
 -------------------------
 To use P2Pool, you must be running your own local bitcoind. For standard
 configurations, using P2Pool should be as simple as:
 
-    python run_p2pool.py
+    python run_p2pool.py --give-author 0 --fee 2 --net cypherfunks
 
 Then run your miner program, connecting to 127.0.0.1 on port 9332 with any
 username and password.
@@ -45,14 +57,14 @@ https://en.bitcoin.it/wiki/P2Pool
 
 Alternate web front end :
 -------------------------
-* https://github.com/hardcpp/P2PoolExtendedFrontEnd
+* https://github.com/blixnood/P2PoolExtendedFrontEnd
 
-Notes for Litecoin:
+Notes for Scrypt:
 =========================
 Requirements:
 -------------------------
-In order to run P2Pool with the Litecoin network, you would need to build and install the
-ltc_scrypt module that includes the scrypt proof of work code that Litecoin uses for hashes.
+In order to run P2Pool with a scrypt-based network, you would need to build and install the
+ltc_scrypt module that includes the scrypt proof of work code that The Cypherfunks uses for hashes.
 
 Linux:
 
@@ -83,15 +95,15 @@ http://stackoverflow.com/questions/6034390/compiling-with-cython-and-mingw-produ
 
 Running P2Pool:
 -------------------------
-Run P2Pool with the "--net litecoin" option.
+Run P2Pool with the "--net cypherfunks" option.
 Run your miner program, connecting to 127.0.0.1 on port 9327.
 Forward port 9338 to the host running P2Pool.
 
 Litecoin's use of ports 9332 and 9332 conflicts with P2Pool running on
-the Bitcoin network. To avoid problems, add these lines to litecoin.conf
+the Bitcoin network. To avoid problems, add these lines to Cypherfunks.conf
 and restart litecoind:
 
-    rpcport=10332
+    rpcport=9999
     port=10333
 
 Sponsors:
